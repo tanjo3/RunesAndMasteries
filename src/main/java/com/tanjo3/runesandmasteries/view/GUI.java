@@ -14,7 +14,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.LayoutStyle;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
@@ -67,7 +66,10 @@ public class GUI extends JFrame {
      * Blanks the field where the runes are listed.
      */
     public void resetRunes() {
-        txtRunesTemp.setText("");
+        ((DefaultListModel) lstMarks.getModel()).clear();
+        ((DefaultListModel) lstSeals.getModel()).clear();
+        ((DefaultListModel) lstGlyphs.getModel()).clear();
+        ((DefaultListModel) lstQuints.getModel()).clear();
     }
 
     /**
@@ -102,10 +104,21 @@ public class GUI extends JFrame {
 
         pnlRunesInfo = new JScrollPane();
         lstRunesInfo = new JList<>();
+        pnlRunes = new JPanel();
+        lblMarkImg = new JLabel();
+        pnlMarks = new JScrollPane();
+        lstMarks = new JList<>();
+        lblSealImg = new JLabel();
+        pnlSeals = new JScrollPane();
+        lstSeals = new JList<>();
+        lblGlyphImg = new JLabel();
+        pnlGlyphs = new JScrollPane();
+        lstGlyphs = new JList<>();
+        lblQuintImg = new JLabel();
+        pnlQuints = new JScrollPane();
+        lstQuints = new JList<>();
         pnlMasteryInfo = new JScrollPane();
         lstMasteryInfo = new JList<>();
-        pnlRunes = new JScrollPane();
-        txtRunesTemp = new JTextArea();
         pnlMasteries = new JPanel();
         pnlFerocity = new JPanel();
         lbl6111 = new JLabel();
@@ -117,6 +130,7 @@ public class GUI extends JFrame {
         lbl6134 = new JLabel();
         lbl6141 = new JLabel();
         lbl6142 = new JLabel();
+        lbl6143 = new JLabel();
         lbl6151 = new JLabel();
         lbl6154 = new JLabel();
         lbl6161 = new JLabel();
@@ -130,6 +144,7 @@ public class GUI extends JFrame {
         lbl6323 = new JLabel();
         lbl6331 = new JLabel();
         lbl6332 = new JLabel();
+        lbl6341 = new JLabel();
         lbl6342 = new JLabel();
         lbl6343 = new JLabel();
         lbl6351 = new JLabel();
@@ -142,10 +157,12 @@ public class GUI extends JFrame {
         lbl6212 = new JLabel();
         lbl6221 = new JLabel();
         lbl6223 = new JLabel();
+        lbl6222 = new JLabel();
         lbl6231 = new JLabel();
         lbl6232 = new JLabel();
         lbl6241 = new JLabel();
         lbl6242 = new JLabel();
+        lbl6243 = new JLabel();
         lbl6251 = new JLabel();
         lbl6252 = new JLabel();
         lbl6261 = new JLabel();
@@ -163,20 +180,87 @@ public class GUI extends JFrame {
         lstRunesInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pnlRunesInfo.setViewportView(lstRunesInfo);
 
+        lblMarkImg.setIcon(new ImageIcon(getClass().getResource("/images/rune_mark.png"))); // NOI18N
+        lblMarkImg.setToolTipText("Marks");
+
+        lstMarks.setFont(new Font("Felix Titling", 0, 12)); // NOI18N
+        lstMarks.setModel(new DefaultListModel());
+        lstMarks.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        pnlMarks.setViewportView(lstMarks);
+
+        lblSealImg.setIcon(new ImageIcon(getClass().getResource("/images/rune_seal.png"))); // NOI18N
+        lblSealImg.setToolTipText("Seals");
+
+        lstSeals.setFont(new Font("Felix Titling", 0, 12)); // NOI18N
+        lstSeals.setModel(new DefaultListModel());
+        lstSeals.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        pnlSeals.setViewportView(lstSeals);
+
+        lblGlyphImg.setIcon(new ImageIcon(getClass().getResource("/images/rune_glyph.png"))); // NOI18N
+        lblGlyphImg.setToolTipText("Glyphs");
+
+        lstGlyphs.setFont(new Font("Felix Titling", 0, 12)); // NOI18N
+        lstGlyphs.setModel(new DefaultListModel());
+        lstGlyphs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        pnlGlyphs.setViewportView(lstGlyphs);
+
+        lblQuintImg.setIcon(new ImageIcon(getClass().getResource("/images/rune_quint.png"))); // NOI18N
+        lblQuintImg.setToolTipText("Quintessences");
+
+        lstQuints.setFont(new Font("Felix Titling", 0, 12)); // NOI18N
+        lstQuints.setModel(new DefaultListModel());
+        lstQuints.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        pnlQuints.setViewportView(lstQuints);
+
+        GroupLayout pnlRunesLayout = new GroupLayout(pnlRunes);
+        pnlRunes.setLayout(pnlRunesLayout);
+        pnlRunesLayout.setHorizontalGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRunesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRunesLayout.createSequentialGroup()
+                        .addComponent(lblMarkImg)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlMarks))
+                    .addGroup(pnlRunesLayout.createSequentialGroup()
+                        .addComponent(lblQuintImg)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlQuints, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
+                    .addGroup(pnlRunesLayout.createSequentialGroup()
+                        .addComponent(lblSealImg)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlSeals, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
+                    .addGroup(pnlRunesLayout.createSequentialGroup()
+                        .addComponent(lblGlyphImg)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlGlyphs, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlRunesLayout.setVerticalGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRunesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMarkImg)
+                    .addComponent(pnlMarks, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSealImg)
+                    .addComponent(pnlSeals, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGlyphImg)
+                    .addComponent(pnlGlyphs, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlRunesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQuintImg)
+                    .addComponent(pnlQuints, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         lstMasteryInfo.setFont(new Font("Felix Titling", 0, 12)); // NOI18N
         lstMasteryInfo.setModel(new DefaultListModel());
         lstMasteryInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pnlMasteryInfo.setViewportView(lstMasteryInfo);
-
-        pnlRunes.setEnabled(false);
-
-        txtRunesTemp.setEditable(false);
-        txtRunesTemp.setColumns(20);
-        txtRunesTemp.setFont(new Font("Felix Titling", 0, 14)); // NOI18N
-        txtRunesTemp.setLineWrap(true);
-        txtRunesTemp.setRows(5);
-        txtRunesTemp.setBorder(BorderFactory.createEtchedBorder());
-        pnlRunes.setViewportView(txtRunesTemp);
 
         pnlFerocity.setBorder(BorderFactory.createTitledBorder(null, "Ferocity", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Felix Titling", 1, 14))); // NOI18N
 
@@ -201,7 +285,7 @@ public class GUI extends JFrame {
         lbl6121.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6121.setIcon(new ImageIcon(getClass().getResource("/images/6121.png"))); // NOI18N
         lbl6121.setText("0");
-        lbl6121.setToolTipText("Double-Edged Sword");
+        lbl6121.setToolTipText("Fresh Blood");
         lbl6121.setEnabled(false);
         lbl6121.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6121.setName("6121"); // NOI18N
@@ -255,11 +339,20 @@ public class GUI extends JFrame {
         lbl6142.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6142.setIcon(new ImageIcon(getClass().getResource("/images/6142.png"))); // NOI18N
         lbl6142.setText("0");
-        lbl6142.setToolTipText("Oppressor");
+        lbl6142.setToolTipText("Double Edged Sword");
         lbl6142.setEnabled(false);
         lbl6142.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6142.setName("6142"); // NOI18N
         lbl6142.setVerticalTextPosition(SwingConstants.BOTTOM);
+
+        lbl6143.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
+        lbl6143.setIcon(new ImageIcon(getClass().getResource("/images/6143.png"))); // NOI18N
+        lbl6143.setText("0");
+        lbl6143.setToolTipText("Battle Trance");
+        lbl6143.setEnabled(false);
+        lbl6143.setHorizontalTextPosition(SwingConstants.CENTER);
+        lbl6143.setName("6143"); // NOI18N
+        lbl6143.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         lbl6151.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6151.setIcon(new ImageIcon(getClass().getResource("/images/6151.png"))); // NOI18N
@@ -310,70 +403,75 @@ public class GUI extends JFrame {
         pnlFerocity.setLayout(pnlFerocityLayout);
         pnlFerocityLayout.setHorizontalGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(pnlFerocityLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFerocityLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(40, 40, 40)
+                        .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlFerocityLayout.createSequentialGroup()
+                                .addComponent(lbl6111)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl6114))
+                            .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlFerocityLayout.createSequentialGroup()
+                                    .addComponent(lbl6131)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl6134))
+                                .addGroup(GroupLayout.Alignment.TRAILING, pnlFerocityLayout.createSequentialGroup()
+                                    .addComponent(lbl6151)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl6154)))))
+                    .addGroup(pnlFerocityLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl6161)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6162)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6164))
+                    .addGroup(pnlFerocityLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(lbl6141)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl6142))
-                    .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlFerocityLayout.createSequentialGroup()
-                            .addComponent(lbl6151)
-                            .addGap(76, 76, 76)
-                            .addComponent(lbl6154))
-                        .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlFerocityLayout.createSequentialGroup()
-                                .addComponent(lbl6131)
-                                .addGap(76, 76, 76)
-                                .addComponent(lbl6134))
-                            .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addGroup(pnlFerocityLayout.createSequentialGroup()
-                                    .addComponent(lbl6121)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbl6122)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbl6123))
-                                .addGroup(pnlFerocityLayout.createSequentialGroup()
-                                    .addComponent(lbl6111)
-                                    .addGap(76, 76, 76)
-                                    .addComponent(lbl6114)))
-                            .addGroup(pnlFerocityLayout.createSequentialGroup()
-                                .addComponent(lbl6161)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl6162)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl6164)))))
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl6142)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6143))
+                    .addGroup(pnlFerocityLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl6121)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6122)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6123)))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFerocityLayout.setVerticalGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(pnlFerocityLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6114)
-                    .addComponent(lbl6111))
+                    .addComponent(lbl6111)
+                    .addComponent(lbl6114))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6123)
+                    .addComponent(lbl6121)
                     .addComponent(lbl6122)
-                    .addComponent(lbl6121))
+                    .addComponent(lbl6123))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6134)
-                    .addComponent(lbl6131))
+                    .addComponent(lbl6131)
+                    .addComponent(lbl6134))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6142)
-                    .addComponent(lbl6141))
+                    .addComponent(lbl6141)
+                    .addComponent(lbl6143))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6154)
-                    .addComponent(lbl6151))
+                    .addComponent(lbl6151)
+                    .addComponent(lbl6154))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFerocityLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6164)
                     .addComponent(lbl6162)
-                    .addComponent(lbl6161))
+                    .addComponent(lbl6161)
+                    .addComponent(lbl6164))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -409,7 +507,7 @@ public class GUI extends JFrame {
         lbl6322.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6322.setIcon(new ImageIcon(getClass().getResource("/images/6322.png"))); // NOI18N
         lbl6322.setText("0");
-        lbl6322.setToolTipText("Assassin");
+        lbl6322.setToolTipText("Secret Stash");
         lbl6322.setEnabled(false);
         lbl6322.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6322.setName("6322"); // NOI18N
@@ -418,7 +516,7 @@ public class GUI extends JFrame {
         lbl6323.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6323.setIcon(new ImageIcon(getClass().getResource("/images/6323.png"))); // NOI18N
         lbl6323.setText("0");
-        lbl6323.setToolTipText("Secret Stash");
+        lbl6323.setToolTipText("Assassin");
         lbl6323.setEnabled(false);
         lbl6323.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6323.setName("6323"); // NOI18N
@@ -441,6 +539,15 @@ public class GUI extends JFrame {
         lbl6332.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6332.setName("6332"); // NOI18N
         lbl6332.setVerticalTextPosition(SwingConstants.BOTTOM);
+
+        lbl6341.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
+        lbl6341.setIcon(new ImageIcon(getClass().getResource("/images/6341.png"))); // NOI18N
+        lbl6341.setText("0");
+        lbl6341.setToolTipText("Greenfather's Gift");
+        lbl6341.setEnabled(false);
+        lbl6341.setHorizontalTextPosition(SwingConstants.CENTER);
+        lbl6341.setName("6341"); // NOI18N
+        lbl6341.setVerticalTextPosition(SwingConstants.BOTTOM);
 
         lbl6342.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6342.setIcon(new ImageIcon(getClass().getResource("/images/6342.png"))); // NOI18N
@@ -512,44 +619,49 @@ public class GUI extends JFrame {
             .addGroup(pnlCunningLayout.createSequentialGroup()
                 .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCunningLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCunningLayout.createSequentialGroup()
-                                .addComponent(lbl6331)
-                                .addGap(76, 76, 76)
-                                .addComponent(lbl6332))
-                            .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addGroup(pnlCunningLayout.createSequentialGroup()
-                                    .addComponent(lbl6321)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbl6322)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbl6323))
-                                .addGroup(pnlCunningLayout.createSequentialGroup()
-                                    .addComponent(lbl6311)
-                                    .addGap(76, 76, 76)
-                                    .addComponent(lbl6312)))
+                                .addGap(40, 40, 40)
+                                .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlCunningLayout.createSequentialGroup()
+                                        .addComponent(lbl6311)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbl6312))
+                                    .addGroup(GroupLayout.Alignment.TRAILING, pnlCunningLayout.createSequentialGroup()
+                                        .addComponent(lbl6351)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbl6352))
+                                    .addGroup(pnlCunningLayout.createSequentialGroup()
+                                        .addComponent(lbl6331)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbl6332))))
                             .addGroup(pnlCunningLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbl6321)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl6322)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl6323))
+                            .addGroup(pnlCunningLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(lbl6361)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbl6362)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl6363))))
-                    .addGroup(pnlCunningLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lbl6342)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl6343))
-                    .addGroup(pnlCunningLayout.createSequentialGroup()
+                                .addComponent(lbl6363)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, pnlCunningLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl6351)
-                        .addGap(76, 76, 76)
-                        .addComponent(lbl6352)))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbl6341)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6342)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl6343)))
+                .addContainerGap())
         );
         pnlCunningLayout.setVerticalGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCunningLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(GroupLayout.Alignment.TRAILING, pnlCunningLayout.createSequentialGroup()
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6312)
                     .addComponent(lbl6311))
@@ -565,6 +677,7 @@ public class GUI extends JFrame {
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6343)
+                    .addComponent(lbl6341)
                     .addComponent(lbl6342))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCunningLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -575,7 +688,7 @@ public class GUI extends JFrame {
                     .addComponent(lbl6363)
                     .addComponent(lbl6362)
                     .addComponent(lbl6361))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pnlResolve.setBorder(BorderFactory.createTitledBorder(null, "Resolve", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Felix Titling", 1, 14))); // NOI18N
@@ -616,6 +729,15 @@ public class GUI extends JFrame {
         lbl6223.setName("6223"); // NOI18N
         lbl6223.setVerticalTextPosition(SwingConstants.BOTTOM);
 
+        lbl6222.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
+        lbl6222.setIcon(new ImageIcon(getClass().getResource("/images/6222.png"))); // NOI18N
+        lbl6222.setText("0");
+        lbl6222.setToolTipText("Siegemaster");
+        lbl6222.setEnabled(false);
+        lbl6222.setHorizontalTextPosition(SwingConstants.CENTER);
+        lbl6222.setName("6222"); // NOI18N
+        lbl6222.setVerticalTextPosition(SwingConstants.BOTTOM);
+
         lbl6231.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6231.setIcon(new ImageIcon(getClass().getResource("/images/6231.png"))); // NOI18N
         lbl6231.setText("0");
@@ -652,6 +774,15 @@ public class GUI extends JFrame {
         lbl6242.setName("6242"); // NOI18N
         lbl6242.setVerticalTextPosition(SwingConstants.BOTTOM);
 
+        lbl6243.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
+        lbl6243.setIcon(new ImageIcon(getClass().getResource("/images/6243.png"))); // NOI18N
+        lbl6243.setText("0");
+        lbl6243.setToolTipText("Fearless");
+        lbl6243.setEnabled(false);
+        lbl6243.setHorizontalTextPosition(SwingConstants.CENTER);
+        lbl6243.setName("6243"); // NOI18N
+        lbl6243.setVerticalTextPosition(SwingConstants.BOTTOM);
+
         lbl6251.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6251.setIcon(new ImageIcon(getClass().getResource("/images/6251.png"))); // NOI18N
         lbl6251.setText("0");
@@ -682,7 +813,7 @@ public class GUI extends JFrame {
         lbl6262.setFont(new Font("Felix Titling", 1, 14)); // NOI18N
         lbl6262.setIcon(new ImageIcon(getClass().getResource("/images/6262.png"))); // NOI18N
         lbl6262.setText("0");
-        lbl6262.setToolTipText("Strength of the Ages");
+        lbl6262.setToolTipText("Courage of the Colossus");
         lbl6262.setEnabled(false);
         lbl6262.setHorizontalTextPosition(SwingConstants.CENTER);
         lbl6262.setName("6262"); // NOI18N
@@ -701,37 +832,44 @@ public class GUI extends JFrame {
         pnlResolve.setLayout(pnlResolveLayout);
         pnlResolveLayout.setHorizontalGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(pnlResolveLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(pnlResolveLayout.createSequentialGroup()
-                        .addComponent(lbl6231)
-                        .addGap(76, 76, 76)
-                        .addComponent(lbl6232))
+                        .addGap(40, 40, 40)
+                        .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlResolveLayout.createSequentialGroup()
+                                .addComponent(lbl6211)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl6212))
+                            .addGroup(GroupLayout.Alignment.TRAILING, pnlResolveLayout.createSequentialGroup()
+                                .addComponent(lbl6231)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl6232))
+                            .addGroup(pnlResolveLayout.createSequentialGroup()
+                                .addComponent(lbl6251)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl6252))))
                     .addGroup(pnlResolveLayout.createSequentialGroup()
-                        .addComponent(lbl6211)
-                        .addGap(76, 76, 76)
-                        .addComponent(lbl6212))
+                        .addContainerGap()
+                        .addComponent(lbl6221)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6223)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6222))
                     .addGroup(pnlResolveLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl6241)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6242)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl6243))
+                    .addGroup(pnlResolveLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(lbl6261)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl6262)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl6263))
-                    .addGroup(pnlResolveLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(lbl6221)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl6223))
-                    .addGroup(pnlResolveLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lbl6241)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl6242))
-                    .addGroup(pnlResolveLayout.createSequentialGroup()
-                        .addComponent(lbl6251)
-                        .addGap(76, 76, 76)
-                        .addComponent(lbl6252)))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbl6263)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlResolveLayout.setVerticalGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(pnlResolveLayout.createSequentialGroup()
@@ -742,7 +880,8 @@ public class GUI extends JFrame {
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6223)
-                    .addComponent(lbl6221))
+                    .addComponent(lbl6221)
+                    .addComponent(lbl6222))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6232)
@@ -750,17 +889,18 @@ public class GUI extends JFrame {
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6242)
-                    .addComponent(lbl6241))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbl6241)
+                    .addComponent(lbl6243))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl6252)
-                    .addComponent(lbl6251))
+                    .addComponent(lbl6251)
+                    .addComponent(lbl6252))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlResolveLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(lbl6263)
-                    .addComponent(lbl6262)
-                    .addComponent(lbl6261))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl6261)
+                    .addComponent(lbl6262))
+                .addContainerGap())
         );
 
         GroupLayout pnlMasteriesLayout = new GroupLayout(pnlMasteries);
@@ -772,7 +912,7 @@ public class GUI extends JFrame {
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCunning, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlResolve, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlResolve, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlMasteriesLayout.setVerticalGroup(pnlMasteriesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -796,10 +936,10 @@ public class GUI extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlRunesInfo, GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
-                    .addComponent(pnlRunes)
+                    .addComponent(pnlRunesInfo, GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
                     .addComponent(cmdNew, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botSplit))
+                    .addComponent(botSplit)
+                    .addComponent(pnlRunes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vertSplit, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -814,15 +954,15 @@ public class GUI extends JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(vertSplit)
                     .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(pnlRunesInfo, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlRunesInfo, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlRunes, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlRunes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botSplit, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdNew, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
                     .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(pnlMasteryInfo, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addComponent(pnlMasteryInfo)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlMasteries, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -844,8 +984,20 @@ public class GUI extends JFrame {
         return lstMasteryInfo;
     }
 
-    public JTextArea getRunesOutput() {
-        return txtRunesTemp;
+    public JList<String> getMarksList() {
+        return lstMarks;
+    }
+
+    public JList<String> getSealsList() {
+        return lstSeals;
+    }
+
+    public JList<String> getGlyphsList() {
+        return lstGlyphs;
+    }
+
+    public JList<String> getQuintsList() {
+        return lstQuints;
     }
 
     public HashMap<String, JLabel> getFerocityTree() {
@@ -872,6 +1024,7 @@ public class GUI extends JFrame {
     private JLabel lbl6134;
     private JLabel lbl6141;
     private JLabel lbl6142;
+    private JLabel lbl6143;
     private JLabel lbl6151;
     private JLabel lbl6154;
     private JLabel lbl6161;
@@ -880,11 +1033,13 @@ public class GUI extends JFrame {
     private JLabel lbl6211;
     private JLabel lbl6212;
     private JLabel lbl6221;
+    private JLabel lbl6222;
     private JLabel lbl6223;
     private JLabel lbl6231;
     private JLabel lbl6232;
     private JLabel lbl6241;
     private JLabel lbl6242;
+    private JLabel lbl6243;
     private JLabel lbl6251;
     private JLabel lbl6252;
     private JLabel lbl6261;
@@ -897,6 +1052,7 @@ public class GUI extends JFrame {
     private JLabel lbl6323;
     private JLabel lbl6331;
     private JLabel lbl6332;
+    private JLabel lbl6341;
     private JLabel lbl6342;
     private JLabel lbl6343;
     private JLabel lbl6351;
@@ -904,16 +1060,27 @@ public class GUI extends JFrame {
     private JLabel lbl6361;
     private JLabel lbl6362;
     private JLabel lbl6363;
+    private JLabel lblGlyphImg;
+    private JLabel lblMarkImg;
+    private JLabel lblQuintImg;
+    private JLabel lblSealImg;
+    private JList<String> lstGlyphs;
+    private JList<String> lstMarks;
     private JList<String> lstMasteryInfo;
+    private JList<String> lstQuints;
     private JList<String> lstRunesInfo;
+    private JList<String> lstSeals;
     private JPanel pnlCunning;
     private JPanel pnlFerocity;
+    private JScrollPane pnlGlyphs;
+    private JScrollPane pnlMarks;
     private JPanel pnlMasteries;
     private JScrollPane pnlMasteryInfo;
+    private JScrollPane pnlQuints;
     private JPanel pnlResolve;
-    private JScrollPane pnlRunes;
+    private JPanel pnlRunes;
     private JScrollPane pnlRunesInfo;
-    private JTextArea txtRunesTemp;
+    private JScrollPane pnlSeals;
     private JSeparator vertSplit;
     // End of variables declaration//GEN-END:variables
 }

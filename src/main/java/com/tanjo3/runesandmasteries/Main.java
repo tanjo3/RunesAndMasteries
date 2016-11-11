@@ -226,23 +226,26 @@ public class Main {
     }
 
     private static void setAsRunes(String runesJSON) {
-        StringBuilder runesTxt = new StringBuilder();
+        // clear rune lists
+        view.resetRunes();
 
         for (JsonElement je : new JsonParser().parse(runesJSON).getAsJsonArray()) {
             JsonObject jo = je.getAsJsonObject();
+            String number = jo.getAsJsonPrimitive("number").getAsString();
+            String name = jo.getAsJsonPrimitive("name").getAsString();
+            String description = jo.getAsJsonPrimitive("description").getAsString();
+            String full = number + "x " + name + " (" + description + ")";
 
-            StringBuilder sb = new StringBuilder();
-            sb.append(jo.getAsJsonPrimitive("number").getAsString());
-            sb.append("x ");
-            sb.append(jo.getAsJsonPrimitive("name").getAsString());
-            sb.append(" (");
-            sb.append(jo.getAsJsonPrimitive("description").getAsString());
-            sb.append(")\n");
-
-            runesTxt.append(sb.toString());
+            if (name.contains("Mark")) {
+                ((DefaultListModel) view.getMarksList().getModel()).addElement(full);
+            } else if (name.contains("Seal")) {
+                ((DefaultListModel) view.getSealsList().getModel()).addElement(full);
+            } else if (name.contains("Glyph")) {
+                ((DefaultListModel) view.getGlyphsList().getModel()).addElement(full);
+            } else {
+                ((DefaultListModel) view.getQuintsList().getModel()).addElement(full);
+            }
         }
-
-        view.getRunesOutput().setText(runesTxt.toString());
     }
 
     private static void setAsMasteries(String masteriesJSON) {
@@ -267,8 +270,11 @@ public class Main {
                 String masteryID = eleMasteryID.getAsJsonPrimitive().getAsString();
                 String masteryPts = eleMasteryPts.getAsJsonPrimitive().getAsString();
                 if (Integer.parseInt(masteryPts) > 0) {
-                    ferocity.get(masteryID).setEnabled(true);
-                    ferocity.get(masteryID).setText(masteryPts);
+                    JLabel masteryBox = ferocity.get(masteryID);
+                    if (masteryBox != null) {
+                        masteryBox.setEnabled(true);
+                        masteryBox.setText(masteryPts);
+                    }
                 }
             }
         }
@@ -283,8 +289,11 @@ public class Main {
                 String masteryID = eleMasteryID.getAsJsonPrimitive().getAsString();
                 String masteryPts = eleMasteryPts.getAsJsonPrimitive().getAsString();
                 if (Integer.parseInt(masteryPts) > 0) {
-                    cunning.get(masteryID).setEnabled(true);
-                    cunning.get(masteryID).setText(masteryPts);
+                    JLabel masteryBox = cunning.get(masteryID);
+                    if (masteryBox != null) {
+                        masteryBox.setEnabled(true);
+                        masteryBox.setText(masteryPts);
+                    }
                 }
             }
         }
@@ -299,8 +308,11 @@ public class Main {
                 String masteryID = eleMasteryID.getAsJsonPrimitive().getAsString();
                 String masteryPts = eleMasteryPts.getAsJsonPrimitive().getAsString();
                 if (Integer.parseInt(masteryPts) > 0) {
-                    resolve.get(masteryID).setEnabled(true);
-                    resolve.get(masteryID).setText(masteryPts);
+                    JLabel masteryBox = resolve.get(masteryID);
+                    if (masteryBox != null) {
+                        masteryBox.setEnabled(true);
+                        masteryBox.setText(masteryPts);
+                    }
                 }
             }
         }

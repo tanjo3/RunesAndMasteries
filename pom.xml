@@ -29,6 +29,7 @@
                     </descriptorRefs>
                     <finalName>LoL Runes and Masteries</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <attach>false</attach>
                     <archive>
                         <manifest>
                             <mainClass>com.tanjo3.runesandmasteries.Main</mainClass>
