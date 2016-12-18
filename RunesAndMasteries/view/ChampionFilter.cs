@@ -31,7 +31,7 @@ namespace RunesAndMasteries {
         private void PopulateWithChampions(ICollection<string> champions) {
             foreach (string champion in champions) {
                 // create a new check box for the champion
-                CheckBox cb = new CheckBox() { AutoSize = true, Text = champion };
+                CheckBox cb = new CheckBox() { Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right, Text = champion };
                 cb.CheckedChanged += RecordChange;
                 cb.CheckedChanged += UnselectAllOption;
 
