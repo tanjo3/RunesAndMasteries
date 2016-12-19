@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
@@ -11,8 +10,8 @@ namespace RunesAndMasteries {
     public partial class RunesAndMasteriesForm : Form {
 
         /// <summary>
-        /// Whether to begin a new query when form is closed.</summary>
-        public bool NewQuery { get; set; } = false;
+        /// The form to let the user choose which champions to look up.</summary>
+        private ChampionFilterForm filterForm;
 
         /// <summary>
         /// References to the mastery pictures for the ferocity mastery tree.</summary>
@@ -56,8 +55,9 @@ namespace RunesAndMasteries {
 
         /// <summary>
         /// Creates a new <c>RunesAndMasteriesForm</c> form.</summary>
-        public RunesAndMasteriesForm(SortedDictionary<ListCount, JArray> runes, SortedDictionary<ListCount, JArray> masteries) {
+        public RunesAndMasteriesForm(ChampionFilterForm filterForm) {
             InitializeComponent();
+            this.filterForm = filterForm;
 
             // create references to the Controls in the ferocity mastery tree
             foreach (Control c in ferocityMasteries.Controls) {
@@ -86,8 +86,17 @@ namespace RunesAndMasteries {
                 }
             }
 
-            // start with masteries grayed out
-            ResetMasteries();
+            // Start form in an initial state
+            ResetForm();
+        }
+
+        /// <summary>
+        /// Sets up the form with the specified rune and mastery information.</summary>
+        /// <param name="runes">The runes information.</param>
+        /// <param name="masteries">The masteries information.</param>
+        public void SetUpForm(IDictionary<ListCount, JArray> runes, IDictionary<ListCount, JArray> masteries) {
+            // reset the form before updating
+            ResetForm();
 
             // add runes to the list
             runesByIndex = new JArray[runes.Count];
@@ -194,15 +203,52 @@ namespace RunesAndMasteries {
         }
 
         /// <summary>
+        /// Resets the form to an initial state.</summary>
+        public void ResetForm() {
+            // reset UI controls
+            runesList.Items.Clear();
+            ResetRunes();
+            masteriesList.Items.Clear();
+            ResetMasteries();
+
+            // reset instance variables
+            previousRuneIndex = -1;
+            previousMasteryIndex = -1;
+        }
+
+        /// <summary>
+        /// Executed when this form is first shown.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An object that contains no event data.</param>
+        private void OnFirstShown(object sender, EventArgs e) {
+            // show the champion filter form modally
+            filterForm.ShowDialog();
+
+            // set up form with user selection
+            if (filterForm.RunesSelected != null && filterForm.MasteriesSelected != null) {
+                SetUpForm(filterForm.RunesSelected, filterForm.MasteriesSelected);
+            } else {
+                filterForm.Dispose();
+                Close();
+            }
+        }
+
+        /// <summary>
         /// Executed when the "New Query" button is clicked.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">An object that contains no event data.</param>
         private void StartNewQuery(object sender, EventArgs e) {
-            // inform that a new query should be started
-            NewQuery = true;
+            // show the champion select dialog
+            filterForm.ResetForm();
+            filterForm.ShowDialog();
 
-            // close the form
-            Close();
+            // set up form with user selection
+            if (filterForm.RunesSelected != null && filterForm.MasteriesSelected != null) {
+                SetUpForm(filterForm.RunesSelected, filterForm.MasteriesSelected);
+            } else {
+                filterForm.Dispose();
+                Close();
+            }
         }
 
         /// <summary>

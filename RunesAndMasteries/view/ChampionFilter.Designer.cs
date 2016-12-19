@@ -34,11 +34,13 @@
             // 
             // selectSpecific
             // 
+            this.selectSpecific.Checked = true;
             this.selectSpecific.Font = new System.Drawing.Font("Fantasque Sans Mono", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectSpecific.Location = new System.Drawing.Point(12, 12);
             this.selectSpecific.Name = "selectSpecific";
             this.selectSpecific.Size = new System.Drawing.Size(318, 30);
             this.selectSpecific.TabIndex = 0;
+            this.selectSpecific.TabStop = true;
             this.selectSpecific.Text = "Query Specific Champions";
             // 
             // selectAll

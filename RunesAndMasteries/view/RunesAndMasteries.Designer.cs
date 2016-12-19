@@ -38,7 +38,9 @@
             this.ferocityTree = new System.Windows.Forms.GroupBox();
             this.ferocityMasteries = new System.Windows.Forms.TableLayoutPanel();
             this.mastery6111 = new System.Windows.Forms.Label();
+            this.mastery6111Picture = new System.Windows.Forms.PictureBox();
             this.mastery6114 = new System.Windows.Forms.Label();
+            this.mastery6114Picture = new System.Windows.Forms.PictureBox();
             this.mastery6121 = new System.Windows.Forms.Label();
             this.mastery6121Picture = new System.Windows.Forms.PictureBox();
             this.mastery6122 = new System.Windows.Forms.Label();
@@ -65,9 +67,8 @@
             this.mastery6162Picture = new System.Windows.Forms.PictureBox();
             this.mastery6164 = new System.Windows.Forms.Label();
             this.mastery6164Picture = new System.Windows.Forms.PictureBox();
-            this.mastery6111Picture = new System.Windows.Forms.PictureBox();
-            this.mastery6114Picture = new System.Windows.Forms.PictureBox();
             this.cunningTree = new System.Windows.Forms.GroupBox();
+            this.cunningMasteries = new System.Windows.Forms.TableLayoutPanel();
             this.mastery6311 = new System.Windows.Forms.Label();
             this.mastery6311Picture = new System.Windows.Forms.PictureBox();
             this.mastery6312 = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@
             this.mastery6363 = new System.Windows.Forms.Label();
             this.mastery6363Picture = new System.Windows.Forms.PictureBox();
             this.resolveTree = new System.Windows.Forms.GroupBox();
+            this.resolveMasteries = new System.Windows.Forms.TableLayoutPanel();
             this.mastery6211 = new System.Windows.Forms.Label();
             this.mastery6211Picture = new System.Windows.Forms.PictureBox();
             this.mastery6212 = new System.Windows.Forms.Label();
@@ -135,14 +137,14 @@
             this.masteriesSplit = new System.Windows.Forms.SplitContainer();
             this.treesSplit = new System.Windows.Forms.SplitContainer();
             this.treesSplit2 = new System.Windows.Forms.SplitContainer();
-            this.cunningMasteries = new System.Windows.Forms.TableLayoutPanel();
-            this.resolveMasteries = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.markPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sealPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glyphPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quintPicture)).BeginInit();
             this.ferocityTree.SuspendLayout();
             this.ferocityMasteries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mastery6111Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mastery6114Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6121Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6122Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6123Picture)).BeginInit();
@@ -156,9 +158,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mastery6161Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6162Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6164Picture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mastery6111Picture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mastery6114Picture)).BeginInit();
             this.cunningTree.SuspendLayout();
+            this.cunningMasteries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6311Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6312Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6321Picture)).BeginInit();
@@ -175,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mastery6362Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6363Picture)).BeginInit();
             this.resolveTree.SuspendLayout();
+            this.resolveMasteries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6211Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6212Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6221Picture)).BeginInit();
@@ -214,8 +216,6 @@
             this.treesSplit2.Panel1.SuspendLayout();
             this.treesSplit2.Panel2.SuspendLayout();
             this.treesSplit2.SuspendLayout();
-            this.cunningMasteries.SuspendLayout();
-            this.resolveMasteries.SuspendLayout();
             this.SuspendLayout();
             // 
             // runesList
@@ -432,6 +432,19 @@
             this.mastery6111.Text = "0";
             this.mastery6111.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // mastery6111Picture
+            // 
+            this.mastery6111Picture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mastery6111Picture.Image = global::RunesAndMasteries.Properties.Resources._6111;
+            this.mastery6111Picture.Location = new System.Drawing.Point(3, 3);
+            this.mastery6111Picture.Name = "mastery6111Picture";
+            this.mastery6111Picture.Size = new System.Drawing.Size(68, 59);
+            this.mastery6111Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mastery6111Picture.TabIndex = 0;
+            this.mastery6111Picture.TabStop = false;
+            this.mastery6111Picture.Tag = "6111";
+            this.mastery6111Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
+            // 
             // mastery6114
             // 
             this.mastery6114.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -443,6 +456,19 @@
             this.mastery6114.Tag = "6114";
             this.mastery6114.Text = "0";
             this.mastery6114.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mastery6114Picture
+            // 
+            this.mastery6114Picture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mastery6114Picture.Image = global::RunesAndMasteries.Properties.Resources._6114;
+            this.mastery6114Picture.Location = new System.Drawing.Point(151, 3);
+            this.mastery6114Picture.Name = "mastery6114Picture";
+            this.mastery6114Picture.Size = new System.Drawing.Size(69, 59);
+            this.mastery6114Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mastery6114Picture.TabIndex = 26;
+            this.mastery6114Picture.TabStop = false;
+            this.mastery6114Picture.Tag = "6114";
+            this.mastery6114Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6121
             // 
@@ -769,32 +795,6 @@
             this.mastery6164Picture.Tag = "6164";
             this.mastery6164Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
-            // mastery6111Picture
-            // 
-            this.mastery6111Picture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mastery6111Picture.Image = global::RunesAndMasteries.Properties.Resources._6111;
-            this.mastery6111Picture.Location = new System.Drawing.Point(3, 3);
-            this.mastery6111Picture.Name = "mastery6111Picture";
-            this.mastery6111Picture.Size = new System.Drawing.Size(68, 59);
-            this.mastery6111Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.mastery6111Picture.TabIndex = 0;
-            this.mastery6111Picture.TabStop = false;
-            this.mastery6111Picture.Tag = "6111";
-            this.mastery6111Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
-            // 
-            // mastery6114Picture
-            // 
-            this.mastery6114Picture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mastery6114Picture.Image = global::RunesAndMasteries.Properties.Resources._6114;
-            this.mastery6114Picture.Location = new System.Drawing.Point(151, 3);
-            this.mastery6114Picture.Name = "mastery6114Picture";
-            this.mastery6114Picture.Size = new System.Drawing.Size(69, 59);
-            this.mastery6114Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.mastery6114Picture.TabIndex = 26;
-            this.mastery6114Picture.TabStop = false;
-            this.mastery6114Picture.Tag = "6114";
-            this.mastery6114Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
-            // 
             // cunningTree
             // 
             this.cunningTree.Controls.Add(this.cunningMasteries);
@@ -807,6 +807,61 @@
             this.cunningTree.TabStop = false;
             this.cunningTree.Text = "Cunning";
             this.cunningTree.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
+            // 
+            // cunningMasteries
+            // 
+            this.cunningMasteries.ColumnCount = 3;
+            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
+            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.cunningMasteries.Controls.Add(this.mastery6311, 0, 1);
+            this.cunningMasteries.Controls.Add(this.mastery6311Picture, 0, 0);
+            this.cunningMasteries.Controls.Add(this.mastery6312, 2, 1);
+            this.cunningMasteries.Controls.Add(this.mastery6312Picture, 2, 0);
+            this.cunningMasteries.Controls.Add(this.mastery6321, 0, 3);
+            this.cunningMasteries.Controls.Add(this.mastery6321Picture, 0, 2);
+            this.cunningMasteries.Controls.Add(this.mastery6322, 1, 3);
+            this.cunningMasteries.Controls.Add(this.mastery6322Picture, 1, 2);
+            this.cunningMasteries.Controls.Add(this.mastery6323, 2, 3);
+            this.cunningMasteries.Controls.Add(this.mastery6323Picture, 2, 2);
+            this.cunningMasteries.Controls.Add(this.mastery6331, 0, 5);
+            this.cunningMasteries.Controls.Add(this.mastery6331Picture, 0, 4);
+            this.cunningMasteries.Controls.Add(this.mastery6332, 2, 5);
+            this.cunningMasteries.Controls.Add(this.mastery6332Picture, 2, 4);
+            this.cunningMasteries.Controls.Add(this.mastery6341, 0, 7);
+            this.cunningMasteries.Controls.Add(this.mastery6341Picture, 0, 6);
+            this.cunningMasteries.Controls.Add(this.mastery6342, 1, 7);
+            this.cunningMasteries.Controls.Add(this.mastery6342Picture, 1, 6);
+            this.cunningMasteries.Controls.Add(this.mastery6343, 2, 7);
+            this.cunningMasteries.Controls.Add(this.mastery6343Picture, 2, 6);
+            this.cunningMasteries.Controls.Add(this.mastery6351, 0, 9);
+            this.cunningMasteries.Controls.Add(this.mastery6351Picture, 0, 8);
+            this.cunningMasteries.Controls.Add(this.mastery6352, 2, 9);
+            this.cunningMasteries.Controls.Add(this.mastery6352Picture, 2, 8);
+            this.cunningMasteries.Controls.Add(this.mastery6361, 0, 11);
+            this.cunningMasteries.Controls.Add(this.mastery6361Picture, 0, 10);
+            this.cunningMasteries.Controls.Add(this.mastery6362, 1, 11);
+            this.cunningMasteries.Controls.Add(this.mastery6362Picture, 1, 10);
+            this.cunningMasteries.Controls.Add(this.mastery6363, 2, 11);
+            this.cunningMasteries.Controls.Add(this.mastery6363Picture, 2, 10);
+            this.cunningMasteries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cunningMasteries.Location = new System.Drawing.Point(3, 29);
+            this.cunningMasteries.Name = "cunningMasteries";
+            this.cunningMasteries.RowCount = 12;
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13593F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.cunningMasteries.Size = new System.Drawing.Size(224, 537);
+            this.cunningMasteries.TabIndex = 68;
             // 
             // mastery6311
             // 
@@ -1194,6 +1249,61 @@
             this.resolveTree.TabIndex = 10;
             this.resolveTree.TabStop = false;
             this.resolveTree.Text = "Resolve";
+            // 
+            // resolveMasteries
+            // 
+            this.resolveMasteries.ColumnCount = 3;
+            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
+            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.resolveMasteries.Controls.Add(this.mastery6211, 0, 1);
+            this.resolveMasteries.Controls.Add(this.mastery6211Picture, 0, 0);
+            this.resolveMasteries.Controls.Add(this.mastery6212, 2, 1);
+            this.resolveMasteries.Controls.Add(this.mastery6212Picture, 2, 0);
+            this.resolveMasteries.Controls.Add(this.mastery6221, 0, 3);
+            this.resolveMasteries.Controls.Add(this.mastery6221Picture, 0, 2);
+            this.resolveMasteries.Controls.Add(this.mastery6222, 2, 3);
+            this.resolveMasteries.Controls.Add(this.mastery6222Picture, 2, 2);
+            this.resolveMasteries.Controls.Add(this.mastery6223, 1, 3);
+            this.resolveMasteries.Controls.Add(this.mastery6223Picture, 1, 2);
+            this.resolveMasteries.Controls.Add(this.mastery6231, 0, 5);
+            this.resolveMasteries.Controls.Add(this.mastery6231Picture, 0, 4);
+            this.resolveMasteries.Controls.Add(this.mastery6232, 2, 5);
+            this.resolveMasteries.Controls.Add(this.mastery6232Picture, 2, 4);
+            this.resolveMasteries.Controls.Add(this.mastery6241, 0, 7);
+            this.resolveMasteries.Controls.Add(this.mastery6241Picture, 0, 6);
+            this.resolveMasteries.Controls.Add(this.mastery6242, 1, 7);
+            this.resolveMasteries.Controls.Add(this.mastery6242Picture, 1, 6);
+            this.resolveMasteries.Controls.Add(this.mastery6243, 2, 7);
+            this.resolveMasteries.Controls.Add(this.mastery6243Picture, 2, 6);
+            this.resolveMasteries.Controls.Add(this.mastery6251, 0, 9);
+            this.resolveMasteries.Controls.Add(this.mastery6251PIcture, 0, 8);
+            this.resolveMasteries.Controls.Add(this.mastery6252, 2, 9);
+            this.resolveMasteries.Controls.Add(this.mastery6252Picture, 2, 8);
+            this.resolveMasteries.Controls.Add(this.mastery6261, 0, 11);
+            this.resolveMasteries.Controls.Add(this.mastery6261Picture, 0, 10);
+            this.resolveMasteries.Controls.Add(this.mastery6262, 1, 11);
+            this.resolveMasteries.Controls.Add(this.mastery6262PIcture, 1, 10);
+            this.resolveMasteries.Controls.Add(this.mastery6263, 2, 11);
+            this.resolveMasteries.Controls.Add(this.mastery6263Picture, 2, 10);
+            this.resolveMasteries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resolveMasteries.Location = new System.Drawing.Point(3, 29);
+            this.resolveMasteries.Name = "resolveMasteries";
+            this.resolveMasteries.RowCount = 12;
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13593F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
+            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
+            this.resolveMasteries.Size = new System.Drawing.Size(225, 537);
+            this.resolveMasteries.TabIndex = 98;
             // 
             // mastery6211
             // 
@@ -1689,116 +1799,6 @@
             this.treesSplit2.SplitterDistance = 230;
             this.treesSplit2.TabIndex = 0;
             // 
-            // cunningMasteries
-            // 
-            this.cunningMasteries.ColumnCount = 3;
-            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
-            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.cunningMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.cunningMasteries.Controls.Add(this.mastery6311, 0, 1);
-            this.cunningMasteries.Controls.Add(this.mastery6311Picture, 0, 0);
-            this.cunningMasteries.Controls.Add(this.mastery6312, 2, 1);
-            this.cunningMasteries.Controls.Add(this.mastery6312Picture, 2, 0);
-            this.cunningMasteries.Controls.Add(this.mastery6321, 0, 3);
-            this.cunningMasteries.Controls.Add(this.mastery6321Picture, 0, 2);
-            this.cunningMasteries.Controls.Add(this.mastery6322, 1, 3);
-            this.cunningMasteries.Controls.Add(this.mastery6322Picture, 1, 2);
-            this.cunningMasteries.Controls.Add(this.mastery6323, 2, 3);
-            this.cunningMasteries.Controls.Add(this.mastery6323Picture, 2, 2);
-            this.cunningMasteries.Controls.Add(this.mastery6331, 0, 5);
-            this.cunningMasteries.Controls.Add(this.mastery6331Picture, 0, 4);
-            this.cunningMasteries.Controls.Add(this.mastery6332, 2, 5);
-            this.cunningMasteries.Controls.Add(this.mastery6332Picture, 2, 4);
-            this.cunningMasteries.Controls.Add(this.mastery6341, 0, 7);
-            this.cunningMasteries.Controls.Add(this.mastery6341Picture, 0, 6);
-            this.cunningMasteries.Controls.Add(this.mastery6342, 1, 7);
-            this.cunningMasteries.Controls.Add(this.mastery6342Picture, 1, 6);
-            this.cunningMasteries.Controls.Add(this.mastery6343, 2, 7);
-            this.cunningMasteries.Controls.Add(this.mastery6343Picture, 2, 6);
-            this.cunningMasteries.Controls.Add(this.mastery6351, 0, 9);
-            this.cunningMasteries.Controls.Add(this.mastery6351Picture, 0, 8);
-            this.cunningMasteries.Controls.Add(this.mastery6352, 2, 9);
-            this.cunningMasteries.Controls.Add(this.mastery6352Picture, 2, 8);
-            this.cunningMasteries.Controls.Add(this.mastery6361, 0, 11);
-            this.cunningMasteries.Controls.Add(this.mastery6361Picture, 0, 10);
-            this.cunningMasteries.Controls.Add(this.mastery6362, 1, 11);
-            this.cunningMasteries.Controls.Add(this.mastery6362Picture, 1, 10);
-            this.cunningMasteries.Controls.Add(this.mastery6363, 2, 11);
-            this.cunningMasteries.Controls.Add(this.mastery6363Picture, 2, 10);
-            this.cunningMasteries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cunningMasteries.Location = new System.Drawing.Point(3, 29);
-            this.cunningMasteries.Name = "cunningMasteries";
-            this.cunningMasteries.RowCount = 12;
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13593F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.cunningMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.cunningMasteries.Size = new System.Drawing.Size(224, 537);
-            this.cunningMasteries.TabIndex = 68;
-            // 
-            // resolveMasteries
-            // 
-            this.resolveMasteries.ColumnCount = 3;
-            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
-            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.resolveMasteries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.resolveMasteries.Controls.Add(this.mastery6211, 0, 1);
-            this.resolveMasteries.Controls.Add(this.mastery6211Picture, 0, 0);
-            this.resolveMasteries.Controls.Add(this.mastery6212, 2, 1);
-            this.resolveMasteries.Controls.Add(this.mastery6212Picture, 2, 0);
-            this.resolveMasteries.Controls.Add(this.mastery6221, 0, 3);
-            this.resolveMasteries.Controls.Add(this.mastery6221Picture, 0, 2);
-            this.resolveMasteries.Controls.Add(this.mastery6222, 2, 3);
-            this.resolveMasteries.Controls.Add(this.mastery6222Picture, 2, 2);
-            this.resolveMasteries.Controls.Add(this.mastery6223, 1, 3);
-            this.resolveMasteries.Controls.Add(this.mastery6223Picture, 1, 2);
-            this.resolveMasteries.Controls.Add(this.mastery6231, 0, 5);
-            this.resolveMasteries.Controls.Add(this.mastery6231Picture, 0, 4);
-            this.resolveMasteries.Controls.Add(this.mastery6232, 2, 5);
-            this.resolveMasteries.Controls.Add(this.mastery6232Picture, 2, 4);
-            this.resolveMasteries.Controls.Add(this.mastery6241, 0, 7);
-            this.resolveMasteries.Controls.Add(this.mastery6241Picture, 0, 6);
-            this.resolveMasteries.Controls.Add(this.mastery6242, 1, 7);
-            this.resolveMasteries.Controls.Add(this.mastery6242Picture, 1, 6);
-            this.resolveMasteries.Controls.Add(this.mastery6243, 2, 7);
-            this.resolveMasteries.Controls.Add(this.mastery6243Picture, 2, 6);
-            this.resolveMasteries.Controls.Add(this.mastery6251, 0, 9);
-            this.resolveMasteries.Controls.Add(this.mastery6251PIcture, 0, 8);
-            this.resolveMasteries.Controls.Add(this.mastery6252, 2, 9);
-            this.resolveMasteries.Controls.Add(this.mastery6252Picture, 2, 8);
-            this.resolveMasteries.Controls.Add(this.mastery6261, 0, 11);
-            this.resolveMasteries.Controls.Add(this.mastery6261Picture, 0, 10);
-            this.resolveMasteries.Controls.Add(this.mastery6262, 1, 11);
-            this.resolveMasteries.Controls.Add(this.mastery6262PIcture, 1, 10);
-            this.resolveMasteries.Controls.Add(this.mastery6263, 2, 11);
-            this.resolveMasteries.Controls.Add(this.mastery6263Picture, 2, 10);
-            this.resolveMasteries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resolveMasteries.Location = new System.Drawing.Point(3, 29);
-            this.resolveMasteries.Name = "resolveMasteries";
-            this.resolveMasteries.RowCount = 12;
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13593F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13592F));
-            this.resolveMasteries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.530744F));
-            this.resolveMasteries.Size = new System.Drawing.Size(225, 537);
-            this.resolveMasteries.TabIndex = 98;
-            // 
             // RunesAndMasteriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1810,12 +1810,15 @@
             this.Name = "RunesAndMasteriesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Runes And Masteries";
+            this.Shown += new System.EventHandler(this.OnFirstShown);
             ((System.ComponentModel.ISupportInitialize)(this.markPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sealPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glyphPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quintPicture)).EndInit();
             this.ferocityTree.ResumeLayout(false);
             this.ferocityMasteries.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mastery6111Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mastery6114Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6121Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6122Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6123Picture)).EndInit();
@@ -1829,9 +1832,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mastery6161Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6162Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6164Picture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mastery6111Picture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mastery6114Picture)).EndInit();
             this.cunningTree.ResumeLayout(false);
+            this.cunningMasteries.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mastery6311Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6312Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6321Picture)).EndInit();
@@ -1848,6 +1850,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mastery6362Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6363Picture)).EndInit();
             this.resolveTree.ResumeLayout(false);
+            this.resolveMasteries.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mastery6211Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6212Picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mastery6221Picture)).EndInit();
@@ -1887,8 +1890,6 @@
             this.treesSplit2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treesSplit2)).EndInit();
             this.treesSplit2.ResumeLayout(false);
-            this.cunningMasteries.ResumeLayout(false);
-            this.resolveMasteries.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
