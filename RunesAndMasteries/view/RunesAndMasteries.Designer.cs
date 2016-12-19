@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RunesAndMasteriesForm));
             this.runesList = new System.Windows.Forms.ListBox();
             this.markPicture = new System.Windows.Forms.PictureBox();
@@ -137,6 +138,7 @@
             this.masteriesSplit = new System.Windows.Forms.SplitContainer();
             this.treesSplit = new System.Windows.Forms.SplitContainer();
             this.treesSplit2 = new System.Windows.Forms.SplitContainer();
+            this.masteryNames = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.markPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sealPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glyphPicture)).BeginInit();
@@ -443,6 +445,7 @@
             this.mastery6111Picture.TabIndex = 0;
             this.mastery6111Picture.TabStop = false;
             this.mastery6111Picture.Tag = "6111";
+            this.masteryNames.SetToolTip(this.mastery6111Picture, "Fury");
             this.mastery6111Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6114
@@ -468,6 +471,7 @@
             this.mastery6114Picture.TabIndex = 26;
             this.mastery6114Picture.TabStop = false;
             this.mastery6114Picture.Tag = "6114";
+            this.masteryNames.SetToolTip(this.mastery6114Picture, "Sorcery");
             this.mastery6114Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6121
@@ -493,6 +497,7 @@
             this.mastery6121Picture.TabIndex = 4;
             this.mastery6121Picture.TabStop = false;
             this.mastery6121Picture.Tag = "6121";
+            this.masteryNames.SetToolTip(this.mastery6121Picture, "Fresh Blood");
             this.mastery6121Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6122
@@ -518,6 +523,7 @@
             this.mastery6122Picture.TabIndex = 16;
             this.mastery6122Picture.TabStop = false;
             this.mastery6122Picture.Tag = "6122";
+            this.masteryNames.SetToolTip(this.mastery6122Picture, "Feast");
             this.mastery6122Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6123
@@ -543,6 +549,7 @@
             this.mastery6123Picture.TabIndex = 28;
             this.mastery6123Picture.TabStop = false;
             this.mastery6123Picture.Tag = "6123";
+            this.masteryNames.SetToolTip(this.mastery6123Picture, "Expose Weakness");
             this.mastery6123Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6131
@@ -568,6 +575,7 @@
             this.mastery6131Picture.TabIndex = 6;
             this.mastery6131Picture.TabStop = false;
             this.mastery6131Picture.Tag = "6131";
+            this.masteryNames.SetToolTip(this.mastery6131Picture, "Vampirism");
             this.mastery6131Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6134
@@ -593,6 +601,7 @@
             this.mastery6134Picture.TabIndex = 30;
             this.mastery6134Picture.TabStop = false;
             this.mastery6134Picture.Tag = "6134";
+            this.masteryNames.SetToolTip(this.mastery6134Picture, "Natural Talent");
             this.mastery6134Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6141
@@ -618,6 +627,7 @@
             this.mastery6141Picture.TabIndex = 8;
             this.mastery6141Picture.TabStop = false;
             this.mastery6141Picture.Tag = "6141";
+            this.masteryNames.SetToolTip(this.mastery6141Picture, "Bounty Hunter");
             this.mastery6141Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6142
@@ -643,6 +653,7 @@
             this.mastery6142Picture.TabIndex = 20;
             this.mastery6142Picture.TabStop = false;
             this.mastery6142Picture.Tag = "6142";
+            this.masteryNames.SetToolTip(this.mastery6142Picture, "Double Edged Sword");
             this.mastery6142Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6143
@@ -668,6 +679,7 @@
             this.mastery6143Picture.TabIndex = 32;
             this.mastery6143Picture.TabStop = false;
             this.mastery6143Picture.Tag = "6143";
+            this.masteryNames.SetToolTip(this.mastery6143Picture, "Battle Trance");
             this.mastery6143Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6151
@@ -693,6 +705,7 @@
             this.mastery6151Picture.TabIndex = 10;
             this.mastery6151Picture.TabStop = false;
             this.mastery6151Picture.Tag = "6151";
+            this.masteryNames.SetToolTip(this.mastery6151Picture, "Battering Blows");
             this.mastery6151Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6154
@@ -718,6 +731,7 @@
             this.mastery6154Picture.TabIndex = 34;
             this.mastery6154Picture.TabStop = false;
             this.mastery6154Picture.Tag = "6154";
+            this.masteryNames.SetToolTip(this.mastery6154Picture, "Piercing Thoughts");
             this.mastery6154Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6161
@@ -743,6 +757,7 @@
             this.mastery6161Picture.TabIndex = 12;
             this.mastery6161Picture.TabStop = false;
             this.mastery6161Picture.Tag = "6161";
+            this.masteryNames.SetToolTip(this.mastery6161Picture, "Warlord\'s Bloodlust");
             this.mastery6161Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6162
@@ -768,6 +783,7 @@
             this.mastery6162Picture.TabIndex = 24;
             this.mastery6162Picture.TabStop = false;
             this.mastery6162Picture.Tag = "6162";
+            this.masteryNames.SetToolTip(this.mastery6162Picture, "Fervor of Battle");
             this.mastery6162Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6164
@@ -793,6 +809,7 @@
             this.mastery6164Picture.TabIndex = 36;
             this.mastery6164Picture.TabStop = false;
             this.mastery6164Picture.Tag = "6164";
+            this.masteryNames.SetToolTip(this.mastery6164Picture, "Deathfire Touch");
             this.mastery6164Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // cunningTree
@@ -886,6 +903,7 @@
             this.mastery6311Picture.TabIndex = 38;
             this.mastery6311Picture.TabStop = false;
             this.mastery6311Picture.Tag = "6311";
+            this.masteryNames.SetToolTip(this.mastery6311Picture, "Wanderer");
             this.mastery6311Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6312
@@ -911,6 +929,7 @@
             this.mastery6312Picture.TabIndex = 56;
             this.mastery6312Picture.TabStop = false;
             this.mastery6312Picture.Tag = "6312";
+            this.masteryNames.SetToolTip(this.mastery6312Picture, "Savagery");
             this.mastery6312Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6321
@@ -936,6 +955,7 @@
             this.mastery6321Picture.TabIndex = 40;
             this.mastery6321Picture.TabStop = false;
             this.mastery6321Picture.Tag = "6321";
+            this.masteryNames.SetToolTip(this.mastery6321Picture, "Runic Affinity");
             this.mastery6321Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6322
@@ -961,6 +981,7 @@
             this.mastery6322Picture.TabIndex = 50;
             this.mastery6322Picture.TabStop = false;
             this.mastery6322Picture.Tag = "6322";
+            this.masteryNames.SetToolTip(this.mastery6322Picture, "Secret Stash");
             this.mastery6322Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6323
@@ -986,6 +1007,7 @@
             this.mastery6323Picture.TabIndex = 58;
             this.mastery6323Picture.TabStop = false;
             this.mastery6323Picture.Tag = "6323";
+            this.masteryNames.SetToolTip(this.mastery6323Picture, "Assassin");
             this.mastery6323Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6331
@@ -1011,6 +1033,7 @@
             this.mastery6331Picture.TabIndex = 42;
             this.mastery6331Picture.TabStop = false;
             this.mastery6331Picture.Tag = "6331";
+            this.masteryNames.SetToolTip(this.mastery6331Picture, "Merciless");
             this.mastery6331Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6332
@@ -1036,6 +1059,7 @@
             this.mastery6332Picture.TabIndex = 60;
             this.mastery6332Picture.TabStop = false;
             this.mastery6332Picture.Tag = "6332";
+            this.masteryNames.SetToolTip(this.mastery6332Picture, "Meditation");
             this.mastery6332Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6341
@@ -1061,6 +1085,7 @@
             this.mastery6341Picture.TabIndex = 44;
             this.mastery6341Picture.TabStop = false;
             this.mastery6341Picture.Tag = "6341";
+            this.masteryNames.SetToolTip(this.mastery6341Picture, "Greenfather\'s Gift");
             this.mastery6341Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6342
@@ -1086,6 +1111,7 @@
             this.mastery6342Picture.TabIndex = 52;
             this.mastery6342Picture.TabStop = false;
             this.mastery6342Picture.Tag = "6342";
+            this.masteryNames.SetToolTip(this.mastery6342Picture, "Bandit");
             this.mastery6342Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6343
@@ -1111,6 +1137,7 @@
             this.mastery6343Picture.TabIndex = 62;
             this.mastery6343Picture.TabStop = false;
             this.mastery6343Picture.Tag = "6343";
+            this.masteryNames.SetToolTip(this.mastery6343Picture, "Dangerous Game");
             this.mastery6343Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6351
@@ -1136,6 +1163,7 @@
             this.mastery6351Picture.TabIndex = 46;
             this.mastery6351Picture.TabStop = false;
             this.mastery6351Picture.Tag = "6351";
+            this.masteryNames.SetToolTip(this.mastery6351Picture, "Precision");
             this.mastery6351Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6352
@@ -1161,6 +1189,7 @@
             this.mastery6352Picture.TabIndex = 64;
             this.mastery6352Picture.TabStop = false;
             this.mastery6352Picture.Tag = "6352";
+            this.masteryNames.SetToolTip(this.mastery6352Picture, "Intelligence");
             this.mastery6352Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6361
@@ -1186,6 +1215,7 @@
             this.mastery6361Picture.TabIndex = 48;
             this.mastery6361Picture.TabStop = false;
             this.mastery6361Picture.Tag = "6361";
+            this.masteryNames.SetToolTip(this.mastery6361Picture, "Stormraider\'s Surge");
             this.mastery6361Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6362
@@ -1211,6 +1241,7 @@
             this.mastery6362Picture.TabIndex = 54;
             this.mastery6362Picture.TabStop = false;
             this.mastery6362Picture.Tag = "6362";
+            this.masteryNames.SetToolTip(this.mastery6362Picture, "Thunderlord\'s Decree");
             this.mastery6362Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6363
@@ -1236,6 +1267,7 @@
             this.mastery6363Picture.TabIndex = 66;
             this.mastery6363Picture.TabStop = false;
             this.mastery6363Picture.Tag = "6363";
+            this.masteryNames.SetToolTip(this.mastery6363Picture, "Windspeaker\'s Blessing");
             this.mastery6363Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // resolveTree
@@ -1328,6 +1360,7 @@
             this.mastery6211Picture.TabIndex = 68;
             this.mastery6211Picture.TabStop = false;
             this.mastery6211Picture.Tag = "6211";
+            this.masteryNames.SetToolTip(this.mastery6211Picture, "Recovery");
             this.mastery6211Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6212
@@ -1353,6 +1386,7 @@
             this.mastery6212Picture.TabIndex = 86;
             this.mastery6212Picture.TabStop = false;
             this.mastery6212Picture.Tag = "6212";
+            this.masteryNames.SetToolTip(this.mastery6212Picture, "Unyielding");
             this.mastery6212Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6221
@@ -1378,6 +1412,7 @@
             this.mastery6221Picture.TabIndex = 70;
             this.mastery6221Picture.TabStop = false;
             this.mastery6221Picture.Tag = "6221";
+            this.masteryNames.SetToolTip(this.mastery6221Picture, "Explorer");
             this.mastery6221Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6222
@@ -1403,6 +1438,7 @@
             this.mastery6222Picture.TabIndex = 88;
             this.mastery6222Picture.TabStop = false;
             this.mastery6222Picture.Tag = "6222";
+            this.masteryNames.SetToolTip(this.mastery6222Picture, "Siegemaster");
             this.mastery6222Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6223
@@ -1428,6 +1464,7 @@
             this.mastery6223Picture.TabIndex = 80;
             this.mastery6223Picture.TabStop = false;
             this.mastery6223Picture.Tag = "6223";
+            this.masteryNames.SetToolTip(this.mastery6223Picture, "Tough Skin");
             this.mastery6223Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6231
@@ -1453,6 +1490,7 @@
             this.mastery6231Picture.TabIndex = 72;
             this.mastery6231Picture.TabStop = false;
             this.mastery6231Picture.Tag = "6231";
+            this.masteryNames.SetToolTip(this.mastery6231Picture, "Runic Armor");
             this.mastery6231Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6232
@@ -1478,6 +1516,7 @@
             this.mastery6232Picture.TabIndex = 90;
             this.mastery6232Picture.TabStop = false;
             this.mastery6232Picture.Tag = "6232";
+            this.masteryNames.SetToolTip(this.mastery6232Picture, "Veteran\'s Scars");
             this.mastery6232Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6241
@@ -1503,6 +1542,7 @@
             this.mastery6241Picture.TabIndex = 74;
             this.mastery6241Picture.TabStop = false;
             this.mastery6241Picture.Tag = "6241";
+            this.masteryNames.SetToolTip(this.mastery6241Picture, "Insight");
             this.mastery6241Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6242
@@ -1528,6 +1568,7 @@
             this.mastery6242Picture.TabIndex = 82;
             this.mastery6242Picture.TabStop = false;
             this.mastery6242Picture.Tag = "6242";
+            this.masteryNames.SetToolTip(this.mastery6242Picture, "Perseverance");
             this.mastery6242Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6243
@@ -1553,6 +1594,7 @@
             this.mastery6243Picture.TabIndex = 92;
             this.mastery6243Picture.TabStop = false;
             this.mastery6243Picture.Tag = "6243";
+            this.masteryNames.SetToolTip(this.mastery6243Picture, "Fearless");
             this.mastery6243Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6251
@@ -1578,6 +1620,7 @@
             this.mastery6251PIcture.TabIndex = 76;
             this.mastery6251PIcture.TabStop = false;
             this.mastery6251PIcture.Tag = "6251";
+            this.masteryNames.SetToolTip(this.mastery6251PIcture, "Swiftness");
             this.mastery6251PIcture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6252
@@ -1603,6 +1646,7 @@
             this.mastery6252Picture.TabIndex = 94;
             this.mastery6252Picture.TabStop = false;
             this.mastery6252Picture.Tag = "6252";
+            this.masteryNames.SetToolTip(this.mastery6252Picture, "Legendary Guardian");
             this.mastery6252Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6261
@@ -1628,6 +1672,7 @@
             this.mastery6261Picture.TabIndex = 78;
             this.mastery6261Picture.TabStop = false;
             this.mastery6261Picture.Tag = "6261";
+            this.masteryNames.SetToolTip(this.mastery6261Picture, "Grasp of the Undying");
             this.mastery6261Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6262
@@ -1653,6 +1698,7 @@
             this.mastery6262PIcture.TabIndex = 84;
             this.mastery6262PIcture.TabStop = false;
             this.mastery6262PIcture.Tag = "6262";
+            this.masteryNames.SetToolTip(this.mastery6262PIcture, "Courage of the Colossus");
             this.mastery6262PIcture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // mastery6263
@@ -1678,6 +1724,7 @@
             this.mastery6263Picture.TabIndex = 96;
             this.mastery6263Picture.TabStop = false;
             this.mastery6263Picture.Tag = "6263";
+            this.masteryNames.SetToolTip(this.mastery6263Picture, "Bond of Stone");
             this.mastery6263Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // uiSplit
@@ -2008,6 +2055,7 @@
         private System.Windows.Forms.TableLayoutPanel ferocityMasteries;
         private System.Windows.Forms.TableLayoutPanel cunningMasteries;
         private System.Windows.Forms.TableLayoutPanel resolveMasteries;
+        private System.Windows.Forms.ToolTip masteryNames;
     }
 }
 
