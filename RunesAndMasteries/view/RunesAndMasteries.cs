@@ -10,6 +10,10 @@ namespace RunesAndMasteries {
     public partial class RunesAndMasteriesForm : Form {
 
         /// <summary>
+        /// API for use during calls.</summary>
+        public string ApiKey { get; set; }
+
+        /// <summary>
         /// The form to let the user choose which champions to look up.</summary>
         private ChampionFilterForm filterForm;
 
@@ -102,7 +106,7 @@ namespace RunesAndMasteries {
             runesByIndex = new JArray[runes.Count];
             runesList.BeginUpdate();
             foreach (var runePage in runes) {
-                int index = runesList.Items.Add(runePage.Key.Count + ": " + runePage.Key.List);
+                int index = runesList.Items.Add($"{runePage.Key.Count}: {runePage.Key.List}");
                 runesByIndex[index] = runePage.Value;
             }
             runesList.EndUpdate();
@@ -111,7 +115,7 @@ namespace RunesAndMasteries {
             masteriesByIndex = new JArray[masteries.Count];
             masteriesList.BeginUpdate();
             foreach (var masteryPage in masteries) {
-                int index = masteriesList.Items.Add(masteryPage.Key.Count + ": " + masteryPage.Key.List);
+                int index = masteriesList.Items.Add($"{masteryPage.Key.Count}: {masteryPage.Key.List}");
                 masteriesByIndex[index] = masteryPage.Value;
             }
             masteriesList.EndUpdate();
@@ -156,7 +160,7 @@ namespace RunesAndMasteries {
 
                 if (mastery.Enabled) {
                     // restore original mastery image when enabled
-                    object original = Properties.Resources.ResourceManager.GetObject("_" + mastery.Tag.ToString());
+                    object original = Properties.Resources.ResourceManager.GetObject($"_{mastery.Tag.ToString()}");
 
                     if (original != null && original is Image) {
                         mastery.Image = original as Image;
@@ -294,19 +298,26 @@ namespace RunesAndMasteries {
 
             // add each rune to their respective lists
             foreach (JToken rune in runes) {
+                // make an API call to get rune information
+                JToken runeDto = API.MakeRequest(API.API_NAME.RIOT_GAMES, $"/lol/static-data/v3/runes/{rune["id"]}?api_key={ApiKey}");
+
                 // create the string to be added to the list
-                string name = rune["name"].ToString();
-                string label = rune["number"] + "x " + name + " (" + rune["description"] + ")";
+                string label = $"{rune["number"]}x {runeDto["name"]} ({runeDto["description"]})";
 
                 // add rune to the appropriate list
-                if (name.Contains("Mark")) {
+                switch (runeDto["rune"]["type"].ToString()) {
+                case "red":
                     marksList.Items.Add(label);
-                } else if (name.Contains("Seal")) {
+                    break;
+                case "yellow":
                     sealsList.Items.Add(label);
-                } else if (name.Contains("Glyph")) {
+                    break;
+                case "blue":
                     glyphsList.Items.Add(label);
-                } else {
+                    break;
+                case "black":
                     quintsList.Items.Add(label);
+                    break;
                 }
             }
         }
@@ -328,14 +339,16 @@ namespace RunesAndMasteries {
                 Dictionary<string, Label> pointsLabels = allPointsLabels[i];
 
                 // go through each mastery in the tree
-                foreach (JToken mastery in (JArray) masteryTree["data"]) {
-                    string id = mastery["mastery"].ToString();
-                    string points = mastery["points"].ToString();
+                for (int j = 6; j > 0; j--) {
+                    foreach (JToken mastery in (JArray) masteryTree["data"][$"row{j}"]) {
+                        string id = mastery["mastery"].ToString();
+                        string points = mastery["points"].ToString();
 
-                    // update UI if points are put into this mastery
-                    if (points != "0") {
-                        pictureBoxes[id].Enabled = true;
-                        pointsLabels[id].Text = points;
+                        // update UI if points are put into this mastery
+                        if (points != "0") {
+                            pictureBoxes[id].Enabled = true;
+                            pointsLabels[id].Text = points;
+                        }
                     }
                 }
 

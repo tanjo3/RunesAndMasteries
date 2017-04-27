@@ -513,9 +513,18 @@ namespace RunesAndMasteries.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 2950dc65ecb3b03af0e01bd4030ef5d0.
         /// </summary>
-        internal static string API_KEY {
+        internal static string CHAMPION_GG_API_KEY {
             get {
-                return ResourceManager.GetString("API_KEY", resourceCulture);
+                return ResourceManager.GetString("CHAMPION_GG_API_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6fb90846-33c1-4787-a6d8-8dedf2561175.
+        /// </summary>
+        internal static string RIOT_GAMES_API_KEY {
+            get {
+                return ResourceManager.GetString("RIOT_GAMES_API_KEY", resourceCulture);
             }
         }
         

@@ -29,6 +29,7 @@
             this.championSelect = new System.Windows.Forms.GroupBox();
             this.championsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.confirmSelection = new System.Windows.Forms.Button();
+            this.filterText = new System.Windows.Forms.TextBox();
             this.championSelect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,15 @@
             this.confirmSelection.Text = "OK";
             this.confirmSelection.Click += new System.EventHandler(this.OnFilterConfirm);
             // 
+            // filterText
+            // 
+            this.filterText.Font = new System.Drawing.Font("Fantasque Sans Mono", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterText.Location = new System.Drawing.Point(937, 12);
+            this.filterText.Name = "filterText";
+            this.filterText.Size = new System.Drawing.Size(315, 30);
+            this.filterText.TabIndex = 4;
+            this.filterText.TextChanged += new System.EventHandler(this.OnFilterUpdate);
+            // 
             // ChampionFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +114,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.selectSpecific);
             this.Controls.Add(this.selectAll);
+            this.Controls.Add(this.filterText);
             this.Controls.Add(this.championSelect);
             this.Controls.Add(this.confirmSelection);
             this.DoubleBuffered = true;
@@ -114,6 +125,7 @@
             this.Text = "Champion Filter";
             this.championSelect.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -124,5 +136,6 @@
         private System.Windows.Forms.GroupBox championSelect;
         private System.Windows.Forms.TableLayoutPanel championsPanel;
         private System.Windows.Forms.Button confirmSelection;
+        private System.Windows.Forms.TextBox filterText;
     }
 }

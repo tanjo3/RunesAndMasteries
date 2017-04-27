@@ -1724,7 +1724,7 @@
             this.mastery6263Picture.TabIndex = 96;
             this.mastery6263Picture.TabStop = false;
             this.mastery6263Picture.Tag = "6263";
-            this.masteryNames.SetToolTip(this.mastery6263Picture, "Bond of Stone");
+            this.masteryNames.SetToolTip(this.mastery6263Picture, "Stoneborn Pact");
             this.mastery6263Picture.EnabledChanged += new System.EventHandler(this.OnMasteryEnable);
             // 
             // uiSplit

@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RunesAndMasteries {
@@ -81,6 +83,9 @@ namespace RunesAndMasteries {
             selectSpecific.Checked = true;
             selectAll.Checked = false;
 
+            // reset filter text box
+            filterText.Text = string.Empty;
+
             // uncheck all champions
             foreach (CheckBox box in championCheckBoxes) {
                 box.Checked = false;
@@ -160,60 +165,98 @@ namespace RunesAndMasteries {
         private static void QueryChampion(string apiKey, string key, string name,
             IDictionary<string, List<string>> runes, IDictionary<string, List<string>> masteries) {
             // make the API call
-            JToken response = API.MakeRequest("/champion/" + key + "?api_key=" + apiKey);
+            //JToken response = API.MakeRequest(API.API_NAME.CHAMPION_GG, $"/champion/{key}?api_key={apiKey}");
 
-            // for each role, get their runes and masteries
-            foreach (JObject jRole in (JArray) response) {
-                string role = name + " " + jRole["role"];
+            // list the various champions roles
+            string[] champRoles = { "Top", "Jungle", "Middle", "ADC", "Support" };
 
-                // most frequent runes and masteries
-                if (QueryFrequent) {
-                    // get their most frequent runes
-                    JArray runePage = (JArray) jRole["runes"]["mostGames"]["runes"];
-                    if (runePage.Count > 3) {
-                        List<string> runesList;
-                        if (runes.TryGetValue(runePage.ToString(), out runesList)) {
-                            runesList.Add(role);
-                        } else {
-                            runes.Add(runePage.ToString(), new List<string>() { role });
+            // create a web client to read Champion.GG pages
+            WebClient client = new WebClient();
+
+            // try to read champion data for all roles
+            foreach (string champRole in champRoles) {
+                string role = $"{name} {champRole}";
+
+                try {
+                    // get the HTML as a string for the champion in the specified role
+                    string htmlCode = client.DownloadString($"http://champion.gg/champion/{key}/{champRole}");
+
+                    // ensure we're looking at the right role and weren't redirected
+                    Match check = Regex.Match(htmlCode, "matchupData.champion = ({.*})");
+                    if (check.Success && check.Groups.Count == 2) {
+                        JObject checkRole = JObject.Parse(check.Groups[1].ToString());
+
+                        if (checkRole["roleTitle"].ToString() != champRole) {
+                            continue;
                         }
                     }
 
-                    // get their most frequent masteries
-                    JArray masteryPage = (JArray) jRole["masteries"]["mostGames"]["masteries"];
-                    if (masteryPage.Count == 3) {
-                        List<string> masteriesList;
-                        if (masteries.TryGetValue(masteryPage.ToString(), out masteriesList)) {
-                            masteriesList.Add(role);
-                        } else {
-                            masteries.Add(masteryPage.ToString(), new List<string>() { role });
-                        }
-                    }
-                }
+                    // search HTML for champion data
+                    Match matchupData = Regex.Match(htmlCode, "matchupData.championData = ({.*})");
+                    if (matchupData.Success && matchupData.Groups.Count == 2) {
+                        // parse championData value as JSON
+                        JObject championData = JObject.Parse(matchupData.Groups[1].ToString());
 
-                // highest winrate runes and masteries
-                if (QueryWinRate) {
-                    // get their highest winrate runes
-                    JArray runePage = (JArray) jRole["runes"]["highestWinPercent"]["runes"];
-                    if (runePage.Count > 3) {
-                        List<string> runesList;
-                        if (runes.TryGetValue(runePage.ToString(), out runesList)) {
-                            runesList.Add(role);
-                        } else {
-                            runes.Add(runePage.ToString(), new List<string>() { role });
-                        }
-                    }
+                        // most frequent runes and masteries
+                        if (QueryFrequent) {
+                            // get their most frequent runes
+                            if (((JObject) championData["runes"]).HasValues) {
+                                JArray runePage = (JArray) championData["runes"]["mostGames"]["runes"];
+                                if (runePage.Count > 3) {
+                                    List<string> runesList;
+                                    if (runes.TryGetValue(runePage.ToString(), out runesList)) {
+                                        runesList.Add(role);
+                                    } else {
+                                        runes.Add(runePage.ToString(), new List<string>() { role });
+                                    }
+                                }
+                            } else {
+                                Console.WriteLine("INFO: Unable to retrieve runes for {0}", role);
+                            }
 
-                    // get their highest winrate masteries
-                    JArray masteryPage = (JArray) jRole["masteries"]["highestWinPercent"]["masteries"];
-                    if (masteryPage.Count == 3) {
-                        List<string> masteriesList;
-                        if (masteries.TryGetValue(masteryPage.ToString(), out masteriesList)) {
-                            masteriesList.Add(role);
-                        } else {
-                            masteries.Add(masteryPage.ToString(), new List<string>() { role });
+                            // get their most frequent masteries
+                            if (((JObject) championData["masteries"]).HasValues) {
+                                JArray masteryPage = (JArray) championData["masteries"]["mostGames"]["masteries"];
+                                if (masteryPage.Count == 3) {
+                                    List<string> masteriesList;
+                                    if (masteries.TryGetValue(masteryPage.ToString(), out masteriesList)) {
+                                        masteriesList.Add(role);
+                                    } else {
+                                        masteries.Add(masteryPage.ToString(), new List<string>() { role });
+                                    }
+                                }
+                            } else {
+                                Console.WriteLine("INFO: Unable to retrieve masteries for {0}", role);
+                            }
+                        }
+
+                        // highest winrate runes and masteries
+                        if (QueryWinRate) {
+                            // get their highest winrate runes
+                            JArray runePage = (JArray) championData["runes"]["highestWinPercent"]["runes"];
+                            if (runePage.Count > 3) {
+                                List<string> runesList;
+                                if (runes.TryGetValue(runePage.ToString(), out runesList)) {
+                                    runesList.Add(role);
+                                } else {
+                                    runes.Add(runePage.ToString(), new List<string>() { role });
+                                }
+                            }
+
+                            // get their highest winrate masteries
+                            JArray masteryPage = (JArray) championData["masteries"]["highestWinPercent"]["masteries"];
+                            if (masteryPage.Count == 3) {
+                                List<string> masteriesList;
+                                if (masteries.TryGetValue(masteryPage.ToString(), out masteriesList)) {
+                                    masteriesList.Add(role);
+                                } else {
+                                    masteries.Add(masteryPage.ToString(), new List<string>() { role });
+                                }
+                            }
                         }
                     }
+                } catch (WebException e) {
+                    Console.WriteLine("ERROR: Unable to lookup {0}: '{1}'", role, e.Message);
                 }
             }
         }
@@ -226,13 +269,42 @@ namespace RunesAndMasteries {
             SortedDictionary<ListCount, JArray> sortedResults = new SortedDictionary<ListCount, JArray>();
             foreach (var page in collectedResults) {
                 // concatenate all the champion roles into a string
-                string countLabel = "[" + string.Join(", ", page.Value) + "]";
+                string countLabel = $"[{string.Join(", ", page.Value)}]";
 
                 // add the rune page to the sorted dictionary
                 sortedResults.Add(new ListCount() { Count = page.Value.Count, List = countLabel }, JArray.Parse(page.Key));
             }
 
             return sortedResults;
+        }
+
+        /// <summary>
+        /// Executed when the filter text box is updated.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An object that contains no event data.</param>
+        private void OnFilterUpdate(object sender, EventArgs e) {
+            if (sender is TextBox) {
+                TextBox tb = sender as TextBox;
+
+                if (string.IsNullOrEmpty(tb.Text)) {
+                    // enable all check boxes
+                    foreach (CheckBox cb in championCheckBoxes) {
+                        cb.Enabled = true;
+                    }
+                } else {
+                    // convert search to lower case for easy matching
+                    string search = tb.Text.ToLower();
+
+                    // only enable check boxes which match the search term
+                    foreach (CheckBox cb in championCheckBoxes) {
+                        if (cb.Text.ToLower().Contains(search)) {
+                            cb.Enabled = true;
+                        } else {
+                            cb.Enabled = false;
+                        }
+                    }
+                }
+            }
         }
     }
 }
